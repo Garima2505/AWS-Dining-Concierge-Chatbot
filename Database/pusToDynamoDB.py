@@ -20,13 +20,13 @@ for i in data['businesses']:
 
     y = json.dumps(record)
 
-credentials = boto3.Session(aws_access_key_id='xxxx',
+credentials = boto3.Session(aws_access_key_id='xxxx',                          # aws account credentials
                             aws_secret_access_key='xxxx').get_credentials()
 
 region = 'us-east-1'
 service = 'es'
 awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, region, service, session_token=credentials.token)
-host = 'search-restaurants-luryqvoc4k7tsv7e5fks42zhyi.us-east-1.es.amazonaws.com'
+host = 'xxx'   # elastic search url
 print(awsauth)
 
 es = Elasticsearch(
