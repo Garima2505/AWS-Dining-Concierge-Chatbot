@@ -108,11 +108,8 @@ def validate_order_restaurants(location, cuisine, date, time, phone_number, no_o
 
     if time:
         if datetime.datetime.strptime(date, '%Y-%m-%d').date() == datetime.date.today():
-            print('here')
             current_time = datetime.datetime.now().time().strftime("%H")
             input_time = str(time)[:2]
-            print(int(current_time))
-            print(int(input_time))
             if int(input_time) <= int(str(current_time)):
                 return build_validation_result(False, 'time',
                                                'Time you entered has already passed. '
