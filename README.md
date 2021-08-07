@@ -41,13 +41,13 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
   <li> Integrate the Lex chatbot into your chat API </li>
   
   <ul>
-    <li> a. Use the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
-    <li> b. When the API receives a request: </li>
+    <li> Use the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
+    <li> When the API receives a request: </li>
     <ul>
-      <li> 1. extract the text message from the API request, </li>
-      <li> 2. send it to your Lex chatbot, </li>
-      <li> 3. wait for the response, </li>
-      <li> 4. send back the response from Lex as the API response. </li>
+      <li> extract the text message from the API request, </li>
+      <li> send it to your Lex chatbot, </li>
+      <li> wait for the response, </li>
+      <li> send back the response from Lex as the API response. </li>
     </ul>
   </ul>  
 <li> Used the Yelp API to collect 5,000+ random restaurants from Manhattan. </li>
@@ -68,19 +68,19 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
   <li> Create an ElasticSearch type under the index “restaurants” called “Restaurant”  </li>
   <li> Stored the RestaurantID and Cuisine for each restaurant scraped in ElasticSearch under the “restaurants” index, where each entry has a “Restaurant” data type. </li>
 </ul>
-<li> 7. Build a suggestions module, that is decoupled from the Lex chatbot. </li>
+<li> Build a suggestions module, that is decoupled from the Lex chatbot. </li>
 <ul>
-<li> a. Create a new Lambda function (LF2) that acts as a queue worker. </li>
+<li> Create a new Lambda function (LF2) that acts as a queue worker. </li>
 <li> Whenever it is invoked it </li>
   <ol>
-    <li> 1. pulls a message from the SQS queue (Q1), </li>
-    <li> 2. gets a random restaurant recommendation for the cuisine collected through conversation from ElasticSearch and DynamoDB,  </li>
-    <li> 3. formats them </li>
-    <li> 4. sends them over text message to the phone number included in the SQS message, using SNS </li>
+    <li> pulls a message from the SQS queue (Q1), </li>
+    <li> gets a random restaurant recommendation for the cuisine collected through conversation from ElasticSearch and DynamoDB,  </li>
+    <li> formats them </li>
+    <li> sends them over text message to the phone number included in the SQS message, using SNS </li>
   </ol>
  </ul>
-<li> i. Use the DynamoDB table “yelp-restaurants” (which you created from Step 1) to fetch more information about the restaurants (restaurant name, address, etc.), since the restaurants stored in ElasticSearch will have only a small subset of fields from each restaurant. </li>
-<li> b. Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result. This automates the queue worker Lambda to poll and process suggestion requests on its own. </li>
+<li> Use the DynamoDB table “yelp-restaurants” (which you created from Step 1) to fetch more information about the restaurants (restaurant name, address, etc.), since the restaurants stored in ElasticSearch will have only a small subset of fields from each restaurant. </li>
+<li> Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result. This automates the queue worker Lambda to poll and process suggestion requests on its own. </li>
 </ol>
 
 In summary, based on a conversation with the customer, your LEX chatbot will identify the customer’s preferred ‘cuisine’. You will search through ElasticSearch to get random suggestions of restaurant IDs with this cuisine. At this point, you would also need to query the DynamoDB table with these restaurant IDs to find more information about the restaurants you want to suggest to your customers like name and address of the restaurant.
