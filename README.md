@@ -44,13 +44,14 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
     <li> a. Use the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
 
     <li> b. When the API receives a request: </li>
-    <ol>
+    
+    <ul>
       <li> 1. extract the text message from the API request, </li>
       <li> 2. send it to your Lex chatbot, </li>
       <li> 3. wait for the response, </li>
       <li> 4. send back the response from Lex as the API response. </li>
-    </ol>
-    
+    </ul>
+  </ul>  
 <li> 5. Used the Yelp API to collect 5,000+ random restaurants from Manhattan. </li>
 
 
