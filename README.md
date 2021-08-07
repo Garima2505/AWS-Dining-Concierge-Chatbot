@@ -5,7 +5,7 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
 
 # Implementation
 <ol>
-  <li> Build and deploy the frontend of the application on AWS S3 bucket</li>
+  <li> Build and deployed the frontend of the application on AWS S3 bucket</li>
 
   <li> Build the API for the application</li>
   <ul>
@@ -36,22 +36,21 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
   
   <li> Based on the parameters collected from the user, the information is then pushed to an SQS queue (Q1). </li>
   
-  <li> Then a confirmation is send to the user that the user will receive the suggestions over SMS. </li>
+  <li> Send a confirmation to the user that the user will receive the suggestions over SMS. </li>
 
-  <li> Integrate the Lex chatbot into your chat API </li>
+  <li> Integrated the Lex chatbot into your chat API </li>
   
   <ul>
-    <li> Use the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
-    <li> When the API receives a request: </li>
+    <li> Used the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
+    <li> API receives a request: </li>
     <ul>
       <li> extract the text message from the API request, </li>
       <li> send it to your Lex chatbot, </li>
       <li> wait for the response, </li>
-      <li> send back the response from Lex as the API response. </li>
+      <li> response back from Lex as the API response. </li>
     </ul>
   </ul>  
 <li> Used the Yelp API to collect 5,000+ random restaurants from Manhattan. </li>
-
 
 <li> DynamoDB (a noSQL database) </li>
 <ul>
@@ -83,4 +82,4 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
 <li> Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result. This automates the queue worker Lambda to poll and process suggestion requests on its own. </li>
 </ol>
 
-In summary, based on a conversation with the customer,the LEX chatbot will identify the customer’s preferred ‘cuisine’. You will search through ElasticSearch to get random suggestions of restaurant IDs with this cuisine. At this point, you would also need to query the DynamoDB table with these restaurant IDs to find more information about the restaurants you want to suggest to your customers like name and address of the restaurant.
+In summary, based on a conversation with the customer,the LEX chatbot will identify the customer’s preferred ‘cuisine and will search using ElasticSearch to receive random suggestions of restaurant IDs with cuisine. At this point, we need to query the DynamoDB table with these restaurant IDs to find more information about the restaurants and suggest to customers like name and address of the restaurant.
