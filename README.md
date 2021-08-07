@@ -42,9 +42,7 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
   
   <ul>
     <li> a. Use the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
-
     <li> b. When the API receives a request: </li>
-    
     <ul>
       <li> 1. extract the text message from the API request, </li>
       <li> 2. send it to your Lex chatbot, </li>
