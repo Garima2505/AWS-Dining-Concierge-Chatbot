@@ -3,6 +3,9 @@ The Dining Concierge chatbot is a microservice-driven web application where the 
 # AWS Services Used
 S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
 
+# Architecture Diagram
+![architecture](/images/architecture.jpg)
+
 # Implementation
 <ol>
   <li> Build and deployed the frontend of the application on AWS S3 bucket</li>
