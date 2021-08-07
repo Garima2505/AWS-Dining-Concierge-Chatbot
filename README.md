@@ -9,13 +9,11 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
 # Implementation
 <ol>
   <li> Build and deployed the frontend of the application on AWS S3 bucket</li>
-
   <li> Build the API for the application</li>
     <ul>
         <li> Used API Gateway to setup the API using Swagger</li>
         <li> Created a Lambda function (LF0) that performs the chat operation</li>
     </ul>
-  
   <li> Build a Dining Concierge chatbot using Amazon Lex.</li>
      <ul>
         <li> Created a bot using the Amazon Lex service.</li>
@@ -26,7 +24,6 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
             <li> ThankYouIntent : <b>"Thank you" </b> </li>
             <li> DiningSuggestionsIntent</li>
         </ul>
-
         <li> For the DiningSuggestionsIntent, the chat bot collect at least one of the following pieces of information from the user, through conversation: </li>
         <ul>
             <li> Location </li>
@@ -36,13 +33,9 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
             <li> Phone number </li>
         </ul>
       </ul>
-  
   <li> Based on the parameters collected from the user, the information is then pushed to an SQS queue (Q1). </li>
-  
   <li> Send a confirmation to the user that the user will receive the suggestions over SMS. </li>
-
   <li> Integrated the Lex chatbot into your chat API </li>
-  
     <ul>
         <li> Used the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
         <li> API receives a request: </li>
@@ -54,16 +47,12 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
         </ul>
     </ul>  
   <li> Used the Yelp API to collect 5,000+ random restaurants from Manhattan. </li>
-
   <li> DynamoDB (a noSQL database) </li>
     <ul>
         <li> Create a DynamoDB table and named “yelp-restaurants” </li>
-
         <li> Store the restaurants you scrape, in DynamoDB because some restaurants might have more or less fields than others, which makes DynamoDB ideal for storing this data </li>
-
         <li> Only Stored the information that are necessary for your recommendation like Business ID, Name, Address, Coordinates, Number of Reviews, Rating, Zip Code </li>
     </ul>
-    
   <li> Created an ElasticSearch instance using the AWS ElasticSearch Service. </li>
     <ul>
         <li> Created an ElasticSearch index called “restaurants”  </li>
