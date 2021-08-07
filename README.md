@@ -1,23 +1,31 @@
 The Dining Concierge chatbot is a microservice-driven web application where the chatbot sends restaurant suggestions given a set of preferences that you provide to the chatbot through conversation.
 
 # AWS Services Used
+S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
 
 # Implementation
 <ol>
-  <li> Build and deploy the frontend of the application in an AWS S3 bucket</li>
+  <li> Build and deploy the frontend of the application on AWS S3 bucket</li>
 
   <li> Build the API for the application</li>
   <ul>
-    <li> a. Used API Gateway to setup the API using Swagger</li>
-    <li> b. Create a Lambda function (LF0) that performs the chat operation</li>
+    <li> Used API Gateway to setup the API using Swagger</li>
+    <li> Created a Lambda function (LF0) that performs the chat operation</li>
   </ul>
   
-  <li> 3. Build a Dining Concierge chatbot using Amazon Lex.</li>
+  <li> Build a Dining Concierge chatbot using Amazon Lex.</li>
   <ul>
-    <li>a. Created a bot using the Amazon Lex service.</li>
-    <li> Created a Lambda function (LF1) as a code hook for Lex, which essentially entails the invocation of your Lambda before Lex responds to any of your requests -- this helps to manipulate and validate parameters as well as format the bot’s responses.</li>
-    <li>c. The bot used three intents:</li>
+    <li> Created a bot using the Amazon Lex service.</li>
+    <li> Created a Lambda function (LF1) as a code hook for Lex, which essentially entails the invocation of your Lambda before Lex responds to any of your requests. This helps to manipulate and validate parameters as well as format the bot’s responses.</li>
+    <li> The bot use three intents:</li>
+    <ul> 
+      <li> GreetingIntent : response such as **“Hi there, how can I help?”** </li>
+      <li> ThankYouIntent : **"Thank you"** </li>
+      <li> DiningSuggestionsIntent</li>
+    </ul>
   </ul>
+  
+
 
 ● GreetingIntent : response such as **“Hi there, how can I help?”**
 
@@ -37,7 +45,7 @@ The Dining Concierge chatbot is a microservice-driven web application where the 
 ● Number of people
 
 ● Phone number
-
+  </ul>
 Based on the parameters collected from the user, the information is then pushed to an SQS queue (Q1).
 
 ● Then a confirmation is send to the user that the user will receive the suggestions over SMS.
