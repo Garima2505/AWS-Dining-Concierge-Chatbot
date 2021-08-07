@@ -22,8 +22,8 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
     <li> Created a Lambda function (LF1) as a code hook for Lex, which essentially entails the invocation of the Lambda before Lex responds to any of your requests. This helps to manipulate and validate parameters as well as format the bot’s responses.</li>
     <li> The bot use three intents:</li>
     <ul> 
-      <li> GreetingIntent : response such as ** “Hi there, how can I help?” ** </li>
-      <li> ThankYouIntent : ** "Thank you" ** </li>
+      <li> GreetingIntent : response such as <b>“Hi there, how can I help?” </b> </li>
+      <li> ThankYouIntent : <b>"Thank you" </b> </li>
       <li> DiningSuggestionsIntent</li>
     </ul>
 
@@ -79,7 +79,7 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
     <li> gets a random restaurant recommendation for the cuisine collected through conversation from ElasticSearch and DynamoDB,  </li>
     <li> formats them </li>
     <li> sends them over text message to the phone number included in the SQS message, using SNS </li>
-  </ol>
+   </ol>
  </ul>
 <li> Use the DynamoDB table “yelp-restaurants” (which was created from Step 1) to fetch more information about the restaurants (restaurant name, address, etc.), since the restaurants stored in ElasticSearch will have only a small subset of fields from each restaurant. </li>
 <li> Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result. This automates the queue worker Lambda to poll and process suggestion requests on its own. </li>
