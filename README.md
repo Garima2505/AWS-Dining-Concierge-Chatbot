@@ -16,7 +16,7 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
   <li> Build a Dining Concierge chatbot using Amazon Lex.</li>
   <ul>
     <li> Created a bot using the Amazon Lex service.</li>
-    <li> Created a Lambda function (LF1) as a code hook for Lex, which essentially entails the invocation of your Lambda before Lex responds to any of your requests. This helps to manipulate and validate parameters as well as format the bot’s responses.</li>
+    <li> Created a Lambda function (LF1) as a code hook for Lex, which essentially entails the invocation of the Lambda before Lex responds to any of your requests. This helps to manipulate and validate parameters as well as format the bot’s responses.</li>
     <li> The bot use three intents:</li>
     <ul> 
       <li> GreetingIntent : response such as ** “Hi there, how can I help?” ** </li>
@@ -79,8 +79,8 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
     <li> sends them over text message to the phone number included in the SQS message, using SNS </li>
   </ol>
  </ul>
-<li> Use the DynamoDB table “yelp-restaurants” (which you created from Step 1) to fetch more information about the restaurants (restaurant name, address, etc.), since the restaurants stored in ElasticSearch will have only a small subset of fields from each restaurant. </li>
+<li> Use the DynamoDB table “yelp-restaurants” (which was created from Step 1) to fetch more information about the restaurants (restaurant name, address, etc.), since the restaurants stored in ElasticSearch will have only a small subset of fields from each restaurant. </li>
 <li> Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result. This automates the queue worker Lambda to poll and process suggestion requests on its own. </li>
 </ol>
 
-In summary, based on a conversation with the customer, your LEX chatbot will identify the customer’s preferred ‘cuisine’. You will search through ElasticSearch to get random suggestions of restaurant IDs with this cuisine. At this point, you would also need to query the DynamoDB table with these restaurant IDs to find more information about the restaurants you want to suggest to your customers like name and address of the restaurant.
+In summary, based on a conversation with the customer,the LEX chatbot will identify the customer’s preferred ‘cuisine’. You will search through ElasticSearch to get random suggestions of restaurant IDs with this cuisine. At this point, you would also need to query the DynamoDB table with these restaurant IDs to find more information about the restaurants you want to suggest to your customers like name and address of the restaurant.
