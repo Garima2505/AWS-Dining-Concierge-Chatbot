@@ -19,59 +19,51 @@ S3, AWS Lambda, API Gateway, Lex, SQS, SNS, Elastic Search, DynamoDB
     <li> Created a Lambda function (LF1) as a code hook for Lex, which essentially entails the invocation of your Lambda before Lex responds to any of your requests. This helps to manipulate and validate parameters as well as format the bot’s responses.</li>
     <li> The bot use three intents:</li>
     <ul> 
-      <li> GreetingIntent : response such as **“Hi there, how can I help?”** </li>
-      <li> ThankYouIntent : **"Thank you"** </li>
+      <li> GreetingIntent : response such as ** “Hi there, how can I help?” ** </li>
+      <li> ThankYouIntent : ** "Thank you" ** </li>
       <li> DiningSuggestionsIntent</li>
+    </ul>
+
+  <li> For the DiningSuggestionsIntent, the chat bot collect at least one of the following pieces of information from the user, through conversation:
+    <ul>
+      <li> Location </li>
+      <li> Cuisine </li>
+      <li> Dining Time </li>
+      <li> Number of people </li>
+      <li> Phone number </li>
     </ul>
   </ul>
   
-
-
-● GreetingIntent : response such as **“Hi there, how can I help?”**
-
-● ThankYouIntent : **"Thank you"**
-
-● DiningSuggestionsIntent
-
+  <li> Based on the parameters collected from the user, the information is then pushed to an SQS queue (Q1). </li>
   
-2/7 iii. For the DiningSuggestionsIntent, the chat bot collect at least one of the following pieces of information from the user, through conversation:
+  <li> Then a confirmation is send to the user that the user will receive the suggestions over SMS. </li>
 
-● Location
+  <li> Integrate the Lex chatbot into your chat API </li>
+  
+  <ul>
+    <li> a. Use the AWS SDK to call your Lex chatbot from the API Lambda (LF0). </li>
 
-● Cuisine
-
-● Dining Time
-
-● Number of people
-
-● Phone number
-  </ul>
-Based on the parameters collected from the user, the information is then pushed to an SQS queue (Q1).
-
-● Then a confirmation is send to the user that the user will receive the suggestions over SMS.
-
-4. Integrate the Lex chatbot into your chat API
-
-a. Use the AWS SDK to call your Lex chatbot from the API Lambda (LF0).
-
-b. When the API receives a request:
-    1. extract the text message from the API request, 
-    2. send it to your Lex chatbot, 
-    3. wait for the response, 
-    4. send back the response from Lex as the API response.
-
-5. Used the Yelp API to collect 5,000+ random restaurants from Manhattan.
+    <li> b. When the API receives a request: </li>
+    <ol>
+      <li> 1. extract the text message from the API request, </li>
+      <li> 2. send it to your Lex chatbot, </li>
+      <li> 3. wait for the response, </li>
+      <li> 4. send back the response from Lex as the API response. </li>
+    </ol>
+    
+<li> 5. Used the Yelp API to collect 5,000+ random restaurants from Manhattan. </li>
 
 
-ii. DynamoDB (a noSQL database)
+<li> DynamoDB (a noSQL database) </li>
+<ul>
+  <li> ● Create a DynamoDB table and named “yelp-restaurants” </li>
 
-● Create a DynamoDB table and named “yelp-restaurants”
+  <li> ● Store the restaurants you scrape, in DynamoDB because some restaurants might have more or less fields than others, which makes DynamoDB ideal for storing this data </li>
 
-● Store the restaurants you scrape, in DynamoDB because some restaurants might have more or less fields than others, which makes DynamoDB ideal for storing this data
-
-● Only Stored the information that are necessary for your recommendation like Business ID, Name, Address, Coordinates, Number of Reviews, Rating, Zip Code
-
-6. Created an ElasticSearch instance using the AWS ElasticSearch Service.
+  <li> ● Only Stored the information that are necessary for your recommendation like Business ID, Name, Address, Coordinates, Number of Reviews, Rating, Zip Code </li>
+</ul>
+    
+<li> 6. Created an ElasticSearch instance using the AWS ElasticSearch Service. </li>
 
 ○ Created an ElasticSearch index called “restaurants” 
     ○ Create an ElasticSearch type under the index “restaurants” called “Restaurant” 
